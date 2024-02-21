@@ -1,7 +1,6 @@
-// boxArea.h
-#ifndef BOX_AREA_H
-#define BOX_AREA_H
+#include<iostream>
+using namespace std;
 
-void boxArea(float length, float width, float height);
-
-#endif // BOX_AREA_H
+void boxArea(float l,float b, float h){
+    cout<<"area of the box is "<<2*(l*b+b*h+h*l)<<endl;
+}
