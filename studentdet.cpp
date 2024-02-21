@@ -1,5 +1,6 @@
 #include<iostream>
 using namespace std;
+
 class Student{
     private:
         string fullName;
@@ -8,25 +9,29 @@ class Student{
         string collegeName;
         int collegeCode;
     public:
-    Student(){
-        cout<<"default constructor"<<endl;
-        collegeName="MVGR";
-        collegeCode=33;
-        cout<<"college name is "<<collegeName<<endl;
-        cout<<"college code is "<<collegeCode<<endl;
-    }
-    Student(string name, double sem){
-        cout<<"parameterized constructor"<<endl;
-        fullName=name;
-        semPercentage=sem;
-        cout<<"full name is "<<fullName<<endl;
-        cout<<"sem percentage is "<<semPercentage<<endl;
-    }
+        Student(){
+            cout<<"created"<<endl;
+        }
+        Student(string name,int num,double sem,string coll,int code) {
+            fullName = name;
+            rollNum = num;
+            semPercentage = sem;
+            collegeName= coll;
+            collegeCode = code;
+        }
+        friend void displayPrivate(Student);
 };
-int main(){
-    Student s1;
-    string s;
-    double x;
-    cout<<"enter the name : "<<endl;
-    getline(cin,s);
-    cout<<"enter the sem percentage : "<<endl;
+
+void displayPrivate(Student s){
+    cout<<"STUDENT NAME: "<<s.fullName<<endl;
+    cout<<"STUDENT ROLL NO: "<<s.rollNum<<endl;
+    cout<<"STUDENT SEM PERCENTAGE: "<<s.semPercentage<<endl;
+    cout<<"COLLEGE NAME: "<<s.collegeName<<endl;
+    cout<<"COLLEGE CODE: "<<s.collegeCode<<endl;
+
+}
+
+int main() {
+    Student student(" G.Poorna Prazwal ",549,8.00,"MAHARAJ VIJAYARAM COLLEGE OF ENGINEERING",33);
+    displayPrivate(student);
+}
