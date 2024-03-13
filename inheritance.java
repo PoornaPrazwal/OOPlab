@@ -1,58 +1,84 @@
-#include<iostream>
-using namespace std;
-class parent{
-    public:
-    int a=100;
-    private:
-    int b=300;
-    protected:
-    int c=200;
-    public:
-    void display(){
-        cout<<"public variable: "<<a<<endl;
-        cout<<"private variable: "<<b<<endl;
-        cout<<"protected variable: "<<c<<endl;
-    }
-    //changing private variable
-    int getb(){
-        return b;
-    }
-};
-//public inheritence
-class child: public parent{
-    public:
-    int privvar=getb();
-    int provar=c;
-};
-//private inheritence
-class child1: parent{
-    public:
-    int pubv=a,privv=getb(),prov=c;
-    
-};
-//protected inheritence
-class child2: protected parent{
-    public:
-    int pubva=a,privva=getb(),provva=c;
-};
-//main function
-int main(){
-    parent k;
-    child k0;
-    cout<<"public simple inheritance"<<endl;
-    cout<<"public varaible : "<<k0.a<<endl;
-    cout<<"private variable : "<<k0.privvar<<endl;
-    cout<<"protected variable : "<<k0.provar<<endl<<endl;
+// Superclass: Employee
+class Employee {
+    // Fields
+    private String name;
+    private int employeeId;
 
-    child1 k1;
-    cout<<"private simple inheritence"<<endl;
-    cout<<"public varaible : "<<k1.pubv<<endl;
-    cout<<"private variable : "<<k1.privv<<endl;
-    cout<<"protected variable : "<<k1.prov<<endl<<endl;
+    // Constructors
+    public Employee(String name, int employeeId) {
+        this.name = name;
+        this.employeeId = employeeId;
+    }
 
-    child2 k2;
-    cout<<"protected simple inheritence"<<endl;
-    cout<<"public varaible : "<<k2.pubva<<endl;
-    cout<<"private variable : "<<k2.privva<<endl;
-    cout<<"protected variable : "<<k2.provva<<endl<<endl;
+    // Methods
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getEmployeeId() {
+        return employeeId;
+    }
+
+    public void setEmployeeId(int employeeId) {
+        this.employeeId = employeeId;
+    }
+
+    public void displayInfo() {
+        System.out.println("Employee ID: " + employeeId);
+        System.out.println("Name: " + name);
+    }
+}
+
+// Subclass: Manager
+class Manager extends Employee {
+    // Fields
+    private String department;
+
+    // Constructors
+    public Manager(String name, int employeeId, String department) {
+        super(name, employeeId);
+        this.department = department;
+    }
+
+    // Methods
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    public void manageTeam() {
+        System.out.println("Manager is managing the team.");
+    }
+
+    // Override displayInfo method to include department information
+    @Override
+    public void displayInfo() {
+        super.displayInfo();
+        System.out.println("Department: " + department);
+    }
+}
+
+// Main class for demonstration
+public class InheritanceExample {
+    public static void main(String[] args) {
+        // Create objects of Employee and Manager
+        Employee employee = new Employee("Rahul", 101);
+        Manager manager = new Manager("AJAY", 201, "HR");
+
+        // Display information about the objects
+        System.out.println("Employee Information:");
+        employee.displayInfo();
+        System.out.println();
+
+        System.out.println("Manager Information:");
+        manager.displayInfo();
+        manager.manageTeam();
+    }
 }
