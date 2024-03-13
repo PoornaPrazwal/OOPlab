@@ -1,0 +1,30 @@
+// Superclass: NumberContainer
+class NumberContainer {
+    private int privateNumber = 10;
+    protected int protectedNumber = 20;
+    public int publicNumber = 30;
+}
+
+// Subclass: DerivedNumberContainer
+class DerivedNumberContainer extends NumberContainer {
+    // This class inherits the protected and public numbers from NumberContainer.
+    // It does not have direct access to the private number of NumberContainer.
+
+    void displayNumbers() {
+        System.out.println("Protected Number in DerivedNumberContainer: " + protectedNumber);
+        System.out.println("Public Number in DerivedNumberContainer: " + publicNumber);
+
+        // Attempting to access the private number (results in a compilation error)
+        // System.out.println("Private Number in DerivedNumberContainer: " + privateNumber); // Compilation error
+    }
+}
+
+public class InheritanceNumbersExample {
+    public static void main(String[] args) {
+        // Creating an object of the DerivedNumberContainer
+        DerivedNumberContainer derivedObject = new DerivedNumberContainer();
+
+        // Displaying information using methods in DerivedNumberContainer
+        derivedObject.displayNumbers();
+    }
+}
